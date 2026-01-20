@@ -2,6 +2,8 @@
 A robust Java-based desktop application designed for managing gym operations, featuring a modern graphical user interface (GUI) and efficient data persistence for member and trainer records.
 Based on the provided Java files, here is a comprehensive description you can use for your GitHub repository:
 
+---
+
 ### **Key Features**
 
 * **Dual Management System**: Separate modules for managing **Gym Members** and **Professional Trainers**.
@@ -17,7 +19,3 @@ Based on the provided Java files, here is a comprehensive description you can us
 * **Language**: Java
 * **GUI Framework**: Java Swing & AWT
 * **Data Storage**: File I/O (Standard Java `FileWriter` and `BufferedReader`)
-
----
-
-**Author:** NayX (v1.0)
