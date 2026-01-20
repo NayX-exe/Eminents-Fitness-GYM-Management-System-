@@ -17,5 +17,5 @@ Based on the provided Java files, here is a comprehensive description you can us
 ### **Technologies Used**
 
 * **Language**: Java
-* **GUI Framework**: Java Swing & AWT
-* **Data Storage**: File I/O (Standard Java `FileWriter` and `BufferedReader`)
+* **GUI Framework**: Java Swing
+* **Data Storage**: File I/O (.txt) (Standard Java `FileWriter` and `BufferedReader`)
