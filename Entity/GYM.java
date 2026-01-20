@@ -10,7 +10,7 @@ public class GYM{
 
     private String memIDF,fullNameMemF,phnNumMemF,emailMemF,addressMemF,dobDateMemF,dobMonMemF,dobYrMemF,
                     identificationMemF,paymentMethodF,identificationMemCBF, genderMemF,packageMemF;
-    private File file;
+    private File file,tempFile;
     private FileWriter fwriter;
 
     public GYM(){}
@@ -145,5 +145,70 @@ public class GYM{
                 JOptionPane.showMessageDialog(null, "Error saving trainer file!");
             }
         }
+        public void delMember(int selectedRow){
+                try {
+                    File file = new File("Data\\member.txt");
+                    File tempFile = new File("Data\\member_temp.txt");
 
+                    FileReader iF = new FileReader(file);
+                    FileWriter tF = new FileWriter(tempFile);
+
+                    BufferedReader reader = new BufferedReader(iF);
+                    BufferedWriter writer = new BufferedWriter(tF);
+
+                    String line;
+                    int currentRow = 0;
+
+                    while ((line = reader.readLine()) != null) {
+                        if (currentRow != selectedRow) {
+                            writer.write(line);
+                            writer.newLine();
+                        }
+                        currentRow++;
+                    }
+
+                    writer.close();
+                    reader.close();
+
+                    if(file.delete()){
+                        tempFile.renameTo(file);
+                    }
+
+                    JOptionPane.showMessageDialog(null, "Member deleted successfully!");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error deleting member!");
+                }
+        }
+        public void delTrainer(int selectedRow){
+             try{
+                    File file = new File("Data\\trainer.txt");
+                    File tempFile = new File("Data\\trainer_temp.txt");
+
+                    FileReader iF = new FileReader(file);
+                    FileWriter tF = new FileWriter(tempFile);
+
+                    BufferedReader reader = new BufferedReader(iF);
+                    BufferedWriter writer = new BufferedWriter(tF);
+
+                    String line;
+                    int currentRow = 0;
+
+                    while((line = reader.readLine())!= null){
+                        if(currentRow!= selectedRow){
+                            writer.write(line);
+                            writer.newLine();
+                        }
+                        currentRow++;
+                    }
+                    writer.close();
+                    reader.close();
+
+                    if(file.delete()){
+                        tempFile.renameTo(file);
+                    }
+                    JOptionPane.showMessageDialog(null,"Trainer deleted successfully!");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Error deleting trainer!");
+                }
+        }
 }
