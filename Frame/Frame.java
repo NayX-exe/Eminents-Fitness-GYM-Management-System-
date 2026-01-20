@@ -1272,40 +1272,9 @@
                 int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this member?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
                 if(confirm != JOptionPane.YES_OPTION) return;
 
+                GYM gym = new GYM();
                 memberModel.removeRow(selectedRow);
-
-                try {
-                    File inputFile = new File("Data\\member.txt");
-                    File tempFile = new File("Data\\member_temp.txt");
-
-                    FileReader iF = new FileReader(inputFile);
-                    FileWriter tF = new FileWriter(tempFile);
-
-                    BufferedReader reader = new BufferedReader(iF);
-                    BufferedWriter writer = new BufferedWriter(tF);
-
-                    String line;
-                    int currentRow = 0;
-
-                    while ((line = reader.readLine()) != null) {
-                        if (currentRow != selectedRow) {
-                            writer.write(line);
-                            writer.newLine();
-                        }
-                        currentRow++;
-                    }
-
-                    writer.close();
-                    reader.close();
-
-                    if(inputFile.delete()) {
-                        tempFile.renameTo(inputFile);
-                    }
-
-                    JOptionPane.showMessageDialog(this, "Member deleted successfully!");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Error deleting member!");
-                }
+                gym.delMember(selectedRow);
             }
             else if(ae.getSource()==delForTra){
                 int selectedRow = trainerTab.getSelectedRow();
@@ -1318,39 +1287,10 @@
                 if(confirm != JOptionPane.YES_OPTION){
                     return;
                 }
-
+                GYM gym = new GYM();
                 trainerModel.removeRow(selectedRow);
-
-                try{
-                    File inputFile = new File("Data\\trainer.txt");
-                    File tempFile = new File("Data\\trainer_temp.txt");
-
-                    FileReader iF = new FileReader(inputFile);
-                    FileWriter tF = new FileWriter(tempFile);
-
-                    BufferedReader reader = new BufferedReader(iF);
-                    BufferedWriter writer = new BufferedWriter(tF);
-
-                    String line;
-                    int currentRow = 0;
-
-                    while((line = reader.readLine())!= null){
-                        if(currentRow!= selectedRow){
-                            writer.write(line);
-                            writer.newLine();
-                        }
-                        currentRow++;
-                    }
-                    writer.close();
-                    reader.close();
-
-                    if(inputFile.delete()){
-                        tempFile.renameTo(inputFile);
-                    }
-                    JOptionPane.showMessageDialog(this,"Trainer deleted successfully!");
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(this,"Error deleting trainer!");
-                }
+                gym.delTrainer(selectedRow);
+               
             }
 
             else if(ae.getSource() == editForMem){
